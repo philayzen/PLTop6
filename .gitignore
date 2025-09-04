@@ -1,0 +1,17 @@
+# IntelliJ project files
+.idea/
+*.iml
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# Build outputs
+bin/
+out/
+target/
+
+# Other
+*.log
+*.tmp
