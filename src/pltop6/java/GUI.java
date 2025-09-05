@@ -1,6 +1,7 @@
 package pltop6.java;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -73,7 +74,9 @@ public class GUI extends Application {
             stage.setScene(scene);
             stage.show();
         } catch (SQLException e) {
-            Scene scene = new Scene(new TextArea(e.getCause().getMessage() + "\n" + e.getStackTrace().toString()), 1280, 697.5);
+//            String message2 = e.getMessage();
+//            Throwable cause = e.getCause();
+            Scene scene = new Scene(new TextArea(e.getMessage() + "\n" + e.getStackTrace().toString()), 1280, 697.5);
             this.scene = scene;
             stage.setScene(scene);
             stage.show();
@@ -245,9 +248,7 @@ public class GUI extends Application {
         ResultSet rs;
         String home = "";
         String away = "";
-                    try
-
-        {
+        try  {
             String query = "Select * from teams where Name = '" + data.getHome() + "';";
             rs = DBSingleton.instance().executeQuery(query);
             rs.next();
@@ -262,15 +263,7 @@ public class GUI extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-                    new
-
-        UpdateFixtureBox(this,Utils.convertSeasonToYear(season),home,data.
-
-        getHome(),away,data.
-
-        getAway(),data.
-
-        getMatchdayAsInt());
+        new UpdateFixtureBox(this,Utils.convertSeasonToYear(season),home,data.getHome(),away,data.getAway(),data.getMatchdayAsInt());
     }
     private void filter() {
         fixturesList.clear();
